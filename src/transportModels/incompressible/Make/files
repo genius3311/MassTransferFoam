@@ -1,0 +1,7 @@
+viscosityModels/concDepPowerLaw/concDepPowerLaw.C
+
+incompressibleMultiSpeciesTwoPhaseMixture/incompressibleMultiSpeciesTwoPhaseMixture.C
+incompressibleTwoPhaseMixturePartial/incompressibleTwoPhaseMixturePartial.C
+
+
+LIB = $(GCFOAM_LIBBIN)/libincompressibleTwoPhaseMixtureGCFOAM

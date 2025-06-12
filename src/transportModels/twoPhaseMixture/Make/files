@@ -1,0 +1,3 @@
+twoPhaseMixture/twoPhaseMixture.C
+
+LIB = $(GCFOAM_LIBBIN)/libtwoPhaseMixture

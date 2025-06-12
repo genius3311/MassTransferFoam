@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Used if oilFilldFracs<0, initialize from VSubElems image
+: ${VSElml:=alpha1.mhd}
+
+runDir="$(pwd)"
+  echo; echo "$runDir"
+mshDir="$(pwd)"
+  echo; echo "$mshDir"
+
+. $GCFOAM_DIR/applications/utilities/voxelImageProcess/initbash
+checkM() { (runApp -l log.checkMesh-$1 checkMesh &&  grep -e 'non-orthogonality Max' log.checkMesh-$1 | sed 's/Threshold.*//'); }
+
+if [ "$VSElml" == "alpha1.mhd" ] ; then
+	(cd $runDir && runApp  voxelAlphaFieldToFoam alpha1.mhd -nGrowAlpha 0)   #-invertAlpha
+

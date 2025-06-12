@@ -1,0 +1,13 @@
+prefix=/home/seven/massTansferFoam
+exec_prefix=/home/seven/massTansferFoam
+libdir=/home/seven/massTansferFoam/lib
+sharedlibdir=/home/seven/massTansferFoam/lib
+includedir=/home/seven/massTansferFoam/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.11
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

@@ -1,0 +1,11 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+makeType=${1:-libso}
+set -x
+
+cd libvoxel && make && cd ..
+cd ofMesh2Voxel && make && cd ..
+cd ofMesh2VoxelAlpha && make && cd ..
+cd smoothMesh && make && cd ..
+cd voxelAlphaFieldToFoam && make && cd ..
+# ----------------------------------------------------------------- end-of-file

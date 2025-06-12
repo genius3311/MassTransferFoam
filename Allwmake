@@ -1,0 +1,7 @@
+#!/bin/sh
+cd pkgs && chmod +x ./makeFile && ./makeFile
+cd ..
+
+src/Allwmake
+applications/Allwmake
+# ----------------------------------------------------------------- end-of-file

@@ -1,0 +1,78 @@
+#!/bin/bash
+# allrun - Script for OpenFOAM postprocessing
+# Usage: ./allrun -alpha <alphaFileName> [-time <timeStep>] [-modifyBC]
+
+# 默认参数
+alphaFile="alpha.phase1"
+timeStep="0.1"
+modifyBC=true   #false
+
+# 函数：备份文件
+backupFile() {
+    local file="$1"
+    if [ -f "$file" ]; then
+        echo "Backing up $file to ${file}.orig"
+        cp "$file" "${file}.orig"
+    else
+        echo "Error: File $file not found"
+        exit 1
+    fi
+}
+
+# 函数：恢复文件
+restoreFile() {
+    local file="$1"
+    if [ -f "${file}.orig" ]; then
+        echo "Restoring $file from ${file}.orig"
+        mv "${file}.orig" "$file"
+    else
+        echo "Warning: Backup file ${file}.orig not found, cannot restore"
+    fi
+}
+
+# 函数：修改边界条件
+modifyBoundaryCondition() {
+    local file="$1"
+    echo "Modifying boundary conditions in $file"
+    
+    # 使用模糊搜索找到所有包含 *AlphaContactAngle 的实例并替换
+    # 使用 sed 的扩展正则表达式
+    sed -i -E 's/type[ \t]+[a-zA-Z]*AlphaContactAngle;/type            fixedValue;/g' "$file"
+    
+    echo "Boundary conditions modified"
+}
+
+echo "========== OpenFOAM Post-Processing =========="
+echo "Alpha file: $alphaFile"
+echo "Time step: $timeStep"
+echo "Modify boundary conditions: $modifyBC"
+echo "==========================================="
+
+# 构建文件路径
+alphaFilePath="${timeStep}/${alphaFile}"
+
+# 检查文件是否存在
+if [ ! -f "$alphaFilePath" ]; then
+    echo "Error: Alpha file $alphaFilePath not found"
+    exit 1
+fi
+
+if [ "$modifyBC" = true ]; then
+    # 备份文件
+    backupFile "$alphaFilePath"
+    
+    # 修改边界条件
+    modifyBoundaryCondition "$alphaFilePath"
+fi
+
+# 运行 ofMesh2VoxelAlpha
+echo "Running ofMesh2VoxelAlpha..."
+ofMesh2VoxelAlpha -time "$timeStep" -alpha "$alphaFile"
+echo "ofMesh2VoxelAlpha completed"
+
+# 如果修改了边界条件，恢复文件
+if [ "$modifyBC" = true ]; then
+    restoreFile "$alphaFilePath"
+fi
+
+echo "Post-processing completed successfully"

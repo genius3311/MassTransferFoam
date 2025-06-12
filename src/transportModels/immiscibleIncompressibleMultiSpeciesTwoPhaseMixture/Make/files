@@ -1,0 +1,3 @@
+immiscibleIncompressibleMultiSpeciesTwoPhaseMixture.C
+
+LIB = $(GCFOAM_LIBBIN)/libimmiscibleIncompressibleMultiSpeciesTwoPhaseMixtureGCFOAM

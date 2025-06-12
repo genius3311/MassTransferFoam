@@ -1,0 +1,23 @@
+#!/bin/bash
+
+: ${smoothMeshNIter:=1}
+: ${smoothMeshBoundary:=yes}
+: ${smoothMeshInternal:=yes}
+: ${smoothMeshRelax:=0.1}
+
+mshDir="$(pwd)"
+  echo; echo "$mshDir"
+
+. $GCFOAM_DIR/applications/utilities/voxelImageProcess/initbash
+checkM() { (runApp -l log.checkMesh-$1 checkMesh &&  grep -e 'non-orthogonality Max' log.checkMesh-$1 | sed 's/Threshold.*//'); }
+
+echo "smoothMesh NIter:$smoothMeshNIter,  Boundary:$smoothMeshBoundary,  Internal:$smoothMeshInternal, Relax:$smoothMeshRelax"
+for ((ii = 0 ; ii < $smoothMeshNIter ; ii++)); do
+	echo $ii
+	if [ "$smoothMeshBoundary" == yes ]; then
+		(cd $mshDir && runApp -l log.smoothMesh-$ii.0 smoothMesh $smoothMeshRelax 10 0 1 && checkM $ii.0); 
+	fi
+	if [ "$smoothMeshInternal" == yes ]; then 
+		(cd $mshDir && runApp -l log.smoothMesh-$ii.1 smoothMesh $smoothMeshRelax 10 4 1 && checkM $ii.1); 
+	fi
+done
