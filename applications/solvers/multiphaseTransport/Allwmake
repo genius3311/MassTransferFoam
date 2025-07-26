@@ -3,6 +3,6 @@ cd ${0%/*} || exit 1    # run from this directory
 makeType=${1:-libso}
 set -x
 
-wmake myInterTransportFoam2
+wmake interConDepTransportFoam
 
 # ----------------------------------------------------------------- end-of-file
