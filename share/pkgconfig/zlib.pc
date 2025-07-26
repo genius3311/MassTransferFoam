@@ -1,8 +1,8 @@
-prefix=/home/seven/massTansferFoam
-exec_prefix=/home/seven/massTansferFoam
-libdir=/home/seven/massTansferFoam/lib
-sharedlibdir=/home/seven/massTansferFoam/lib
-includedir=/home/seven/massTansferFoam/include
+prefix=/home/seven/massTransferFoam
+exec_prefix=/home/seven/massTransferFoam
+libdir=/home/seven/massTransferFoam/lib
+sharedlibdir=/home/seven/massTransferFoam/lib
+includedir=/home/seven/massTransferFoam/include
 
 Name: zlib
 Description: zlib compression library

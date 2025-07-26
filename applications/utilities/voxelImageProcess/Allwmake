@@ -8,4 +8,5 @@ cd ofMesh2Voxel && make && cd ..
 cd ofMesh2VoxelAlpha && make && cd ..
 cd smoothMesh && make && cd ..
 cd voxelAlphaFieldToFoam && make && cd ..
+cd voxelPoreElemToFoam && make && cd ..
 # ----------------------------------------------------------------- end-of-file

@@ -1,0 +1,4 @@
+SOURCE = \
+myInterTransportFoam2.C \
+
+# sources

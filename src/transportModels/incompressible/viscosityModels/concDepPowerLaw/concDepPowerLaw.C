@@ -53,35 +53,60 @@ namespace viscosityModels
 Foam::tmp<Foam::volScalarField>
 Foam::viscosityModels::concDepPowerLaw::calcNu() const
 {
-    const volScalarField& Y_ = U_.mesh().lookupObject<volScalarField>(solutionSpeciesName_);
-    
-    /*return max
+    /*tmp<volScalarField> tnu
     (
-        nuMin_,
-        min
+        new volScalarField
         (
-            nuMax_,
-            k_*pow
+            IOobject
             (
-                max
-                (
-                    dimensionedScalar("one", dimTime, 1.0)*strainRate(),
-                    dimensionedScalar("SMALL", dimless, SMALL)
-                ),
-                n_.value() - scalar(1)
-            )
-        )
-    );*/
-    
-    return max
-    (
-        nuMin_,
-        min
-        (
-            nuMax_,
-            pow((pow(nuMax_,-0.25) + (Y_/YInitial_)* (pow(nuSpecies_,-0.25) - pow(nuMax_,-0.25))),-4)
-        )
+                "nu",
+                U_.time().timeName(),
+                U_.mesh(),
+                IOobject::NO_READ,
+                IOobject::AUTO_WRITE  //AUTO_WRITE  NO_WRITE
+            ),
+        ),
+        U_.mesh(),
+        nuMax_
     );
+    volScalarField& nu = tn.ref();*/
+    
+    // Check if the field exists before trying to access it
+    if (U_.mesh().foundObject<volScalarField>(solutionSpeciesName_))
+    {
+        const volScalarField& Y_ = U_.mesh().lookupObject<volScalarField>(solutionSpeciesName_);
+    
+        return max
+        (
+            nuMin_,
+            min
+            (
+                nuMax_,
+                pow((pow(nuMax_,-0.25) + (Y_/YInitial_)* (pow(nuSpecies_,-0.25) - pow(nuMax_,-0.25))),-4)
+            )
+        );
+    }
+    else
+    {
+        tmp<volScalarField> tnu
+	(
+	    new volScalarField
+	    (
+		IOobject
+		(
+		    "nu",
+		    U_.time().timeName(),
+		    U_.mesh(),
+		    IOobject::NO_READ,
+		    IOobject::AUTO_WRITE  //AUTO_WRITE  NO_WRITE
+		),
+		U_.mesh(),
+		nuMax_
+	    )
+	);
+        return tnu;
+    }
+    
 }
 
 

@@ -8,7 +8,5 @@ wmake $makeType twoPhaseProperties
 wmake $makeType immiscibleIncompressibleTwoPhaseMixture
 wmake $makeType twoPhaseMixture
 wmake $makeType incompressible
-wmake $makeType immiscibleIncompressibleMultiSpeciesTwoPhaseMixture
-wmake $makeType immiscibleIncompressibleTwoPhaseMixturePartial
 
 # ----------------------------------------------------------------- end-of-file
