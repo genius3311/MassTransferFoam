@@ -8,7 +8,7 @@ USE_MINIFOAMX3=1
 OFCs=$(shell find | grep -F .C | sed s:./::)
 srcs=${msSrc}/libvoxel/voxelImage.cpp
 OFincs =   meshTools finiteVolume
-OFlibs =   meshTools finiteVolume 
+OFlibs =   meshTools finiteVolume twoPhasePropertiesMTFOAM
 msCFLAGS += -DNoRepository
 
 USE_ZLIB=1

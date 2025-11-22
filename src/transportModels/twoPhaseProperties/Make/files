@@ -6,4 +6,4 @@ alphaContactAngle/heterogeneousAlphaContactAngle/heterogeneousAlphaContactAngleF
 
 alphaFixedPressure/alphaFixedPressureFvPatchScalarField.C
 
-LIB = $(GCFOAM_LIBBIN)/libtwoPhasePropertiesGCFOAM
+LIB = $(MTFOAM_LIBBIN)/libtwoPhasePropertiesMTFOAM

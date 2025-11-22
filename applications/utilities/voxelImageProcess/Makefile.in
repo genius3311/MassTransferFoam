@@ -50,7 +50,7 @@ ifndef msSrc  # set msSrc to upper directory if not already set
 endif
 
 #msRoot ?= $(abspath ${msSrc}/..)
-#msRoot = /home/seven/GCFoam-5.1
+#msRoot = /home/seven/MTFOAM-5.1
 msRoot ?= $(abspath ${msSrc}/../../..)
 
 # set msBinDir if not set

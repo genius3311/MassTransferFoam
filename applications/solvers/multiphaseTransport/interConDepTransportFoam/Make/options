@@ -4,30 +4,30 @@ EXE_INC = \
     -I$(LIB_SRC)/meshTools/lnInclude \
     -I$(LIB_SRC)/sampling/lnInclude \
     -I$(LIB_SRC)/dynamicFvMesh/lnInclude \
-    -I$(GCFOAM_SRC)/thermophysicalModels/reactionThermo/lnInclude \
+    -I$(MTFOAM_SRC)/thermophysicalModels/reactionThermo/lnInclude \
     -I$(LIB_SRC)/thermophysicalModels/specie/lnInclude \
     -I$(LIB_SRC)/transportModels \
     -I$(LIB_SRC)/transportModels/incompressible/lnInclude \
-    -I$(GCFOAM_SRC)/transportModels/interfaceProperties/lnInclude \
+    -I$(MTFOAM_SRC)/transportModels/interfaceProperties/lnInclude \
     -I$(LIB_SRC)/transportModels/twoPhaseMixture/lnInclude \
     -I$(LIB_SRC)/TurbulenceModels/turbulenceModels/lnInclude \
     -I$(LIB_SRC)/TurbulenceModels/incompressible/lnInclude \
-    -I$(GCFOAM_SRC)/transportModels/immiscibleIncompressibleTwoPhaseMixture/lnInclude \
-    -I$(GCFOAM_SRC)/transportModels/incompressible/lnInclude 
+    -I$(MTFOAM_SRC)/transportModels/immiscibleIncompressibleTwoPhaseMixture/lnInclude \
+    -I$(MTFOAM_SRC)/transportModels/incompressible/lnInclude 
 
 EXE_LIBS = \
-    -L$(GCFOAM_LIBBIN) \
+    -L$(MTFOAM_LIBBIN) \
     -lfiniteVolume \
     -lfvOptions \
     -lmeshTools \
     -lsampling \
     -ldynamicFvMesh \
     -lincompressibleTransportModels \
-    -lreactionThermophysicalModelsGCFOAM \
+    -lreactionThermophysicalModelsMTFOAM \
     -lspecie \
-    -linterfacePropertiesGCFOAM \
-    -limmiscibleIncompressibleTwoPhaseMixtureGCFOAM \
-    -lincompressibleTwoPhaseMixtureGCFOAM \
+    -linterfacePropertiesMTFOAM \
+    -limmiscibleIncompressibleTwoPhaseMixtureMTFOAM \
+    -lincompressibleTwoPhaseMixtureMTFOAM \
     -lturbulenceModels \
     -lincompressibleTurbulenceModels \
     -lwaveModels

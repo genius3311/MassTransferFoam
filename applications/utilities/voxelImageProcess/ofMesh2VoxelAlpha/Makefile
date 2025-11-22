@@ -9,7 +9,7 @@ OFCs=$(shell find | grep -F .C | sed s:./::)
 srcs=${msSrc}/libvoxel/voxelImage.cpp
 
 OFincs =   meshTools finiteVolume
-OFlibs =   meshTools finiteVolume twoPhasePropertiesGCFOAM
+OFlibs =   meshTools finiteVolume twoPhasePropertiesMTFOAM
 
 msCFLAGS += -DNoRepository
 USE_ZLIB=1

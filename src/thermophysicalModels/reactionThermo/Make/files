@@ -7,4 +7,4 @@ mixtures/basicTwoPhaseMultiComponentTransportMixture/newTwoPhaseMultiComponentTr
 
 derivedFvPatchFields/globalConcentrationMixed/globalConcentrationMixedFvPatchScalarField.C
 
-LIB = $(GCFOAM_LIBBIN)/libreactionThermophysicalModelsGCFOAM
+LIB = $(MTFOAM_LIBBIN)/libreactionThermophysicalModelsMTFOAM

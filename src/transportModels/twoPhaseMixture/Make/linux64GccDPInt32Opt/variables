@@ -1,1 +1,1 @@
-LIB = $(GCFOAM_LIBBIN)/libtwoPhaseMixture
+LIB = $(MTFOAM_LIBBIN)/libtwoPhaseMixture

@@ -1,4 +1,4 @@
 viscosityModels/concDepPowerLaw/concDepPowerLaw.C
 
 
-LIB = $(GCFOAM_LIBBIN)/libincompressibleTwoPhaseMixtureGCFOAM
+LIB = $(MTFOAM_LIBBIN)/libincompressibleTwoPhaseMixtureMTFOAM

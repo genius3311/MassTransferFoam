@@ -10,5 +10,5 @@ EXE_INC = \
 
 LIB_LIBS = \
     -ltwoPhaseMixture \
-    -L$(GCFOAM_LIBBIN) \
+    -L$(MTFOAM_LIBBIN) \
     -lfiniteVolume

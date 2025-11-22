@@ -12,4 +12,4 @@ surfaceTensionModels/temperatureDependent/temperatureDependentSurfaceTension.C
 derivedFvPatchFields/wallEnergyConstantContactAngle/wallEnergyConstantContactAngleFvPatchScalarField.C
 
 
-LIB = $(GCFOAM_LIBBIN)/libinterfacePropertiesGCFOAM
+LIB = $(MTFOAM_LIBBIN)/libinterfacePropertiesMTFOAM
